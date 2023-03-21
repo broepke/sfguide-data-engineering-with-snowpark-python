@@ -14,9 +14,9 @@ from snowflake.snowpark import Session
 #import snowflake.snowpark.types as T
 import snowflake.snowpark.functions as F
 
-
 def create_pos_view(session):
     session.use_schema('HARMONIZED')
+    session.use_role('ACCOUNTADMIN')
     order_detail = session.table("RAW_POS.ORDER_DETAIL").select(F.col("ORDER_DETAIL_ID"), \
                                                                 F.col("LINE_NUMBER"), \
                                                                 F.col("MENU_ITEM_ID"), \
